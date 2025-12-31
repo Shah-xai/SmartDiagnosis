@@ -1,0 +1,9 @@
+kagglehub
+numpy
+pillow
+tqdm
+matplotlib
+boto3
+ipykernel
+sagemaker>=2,<3
+
