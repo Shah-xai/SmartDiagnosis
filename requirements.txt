@@ -6,4 +6,6 @@ matplotlib
 boto3
 ipykernel
 sagemaker>=2,<3
+streamlit
+requests
 
