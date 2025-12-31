@@ -7,6 +7,18 @@ A **RESTful inference API** is developed on AWS using **API Gateway and Lambda**
 
 ---
 
+## 🎥 Demo — Click the Image to Watch
+
+[![Chest X-Ray Image Classification Demo](VideoCover.png)](https://youtu.be/oCtPpSqAK70)
+
+> Click the image above to watch the end-to-end demo:
+> Streamlit → API Gateway → Lambda → SageMaker Endpoint → Prediction
+
+> **Note:** Trained model artifacts and weights are not included in this repository due to size constraints.  
+> The demo video shows the fully deployed system running on AWS.
+
+---
+
 ## Project Overview
 
 This repository implements a binary classification pipeline for detecting **Pneumonia vs. Normal** cases from Chest X-Ray images.
@@ -19,98 +31,9 @@ The workflow includes:
 - Training using SageMaker built-in Image Classification (pretrained ResNet)  
 - Model evaluation using Batch Transform  
 - Deployment of a real-time SageMaker inference endpoint  
-- Development of a **REST API using AWS API Gateway + Lambda** to expose the model  
-- A simple Streamlit UI that consumes the REST API for inference  
-
+- Development of a **REST API using AWS API Gateway + Lambda**  
+- A Streamlit UI consuming the REST API for inference  
+> Remember to delete SageMaker endpoints after testing to avoid unnecessary AWS charges.
 ---
 
-## Tech Stack
-
-- **Amazon SageMaker** (built-in Image Classification)
-- **Amazon S3**
-- **AWS Lambda**
-- **AWS API Gateway (REST API)**
-- **Python**
-- **SageMaker Python SDK**
-- **Streamlit** (web app UI)
-
----
-
-## Repository Contents
-
-### `main.ipynb`
-End-to-end notebook covering:
-- Dataset download
-- Data preprocessing and labeling
-- S3 upload and channel configuration
-- Model training
-- Batch transform evaluation
-- Endpoint deployment
-
-### `tools/`
-Utility modules used by the notebook for dataset handling and evaluation.
-
-### `dataset/`
-Local workspace created during preprocessing (not intended for long-term storage).
-
-### `app.py`
-Streamlit application for uploading images and running inference against the deployed model via the REST API.
-
----
-
-## Model Details
-
-- **Algorithm:** SageMaker built-in Image Classification  
-- **Architecture:** Pretrained ResNet (101 layers)  
-- **Number of classes:** 2  
-- **Input:** Image data (binary)  
-- **Output:** Class probabilities / predicted label  
-
----
-
-## Running the Notebook
-
-### Prerequisites
-- AWS account with SageMaker permissions
-- An S3 bucket for datasets and outputs
-- Kaggle API credentials configured (for dataset download)
-- SageMaker Studio or Jupyter environment with SageMaker SDK installed
-
-### Steps
-1. Open `main.ipynb`
-2. Execute cells in order:
-   - Data download and preparation
-   - Dataset upload to S3
-   - Model training
-   - Batch transform evaluation
-   - Endpoint deployment
-
->  Remember to delete deployed endpoints after testing to avoid unnecessary AWS charges.
-
----
-
-## Inference Architecture
-
-Inference is exposed through a **REST API**:
-
-- **API Gateway (REST API)** receives binary image requests
-- **Lambda** handles request processing and forwards data to the SageMaker endpoint
-- **SageMaker Endpoint** performs inference and returns predictions
-- **Streamlit app** acts as a client consuming the REST API
-
-This design cleanly separates the frontend from the ML infrastructure and reflects standard production inference patterns.
-
----
-
-## Streamlit Application
-
-A simple Streamlit app is provided to demonstrate inference:
-
-- Upload an image
-- Send **binary image data** to the REST API
-- Display prediction results returned by the backend
-
-Run locally:
-
-```bash
-streamlit run app.py
+#
